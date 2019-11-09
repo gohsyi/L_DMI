@@ -199,6 +199,9 @@ train_dataset_noisy = CIFAR10_(root=root, train=True, valid=False, test=False, n
 train_loader_noisy = torch.utils.data.DataLoader(dataset=train_dataset_noisy, batch_size=batch_size, shuffle=True, num_workers=16)
 train_loader_noisy_unshuffle = torch.utils.data.DataLoader(dataset = train_dataset_noisy, batch_size=batch_size, shuffle =False)
 
+train_loader_noisy_peer_data = torch.utils.data.DataLoader(dataset=train_dataset_noisy, batch_size=batch_size, shuffle=True, num_workers=16)
+train_loader_noisy_peer_labels = torch.utils.data.DataLoader(dataset=train_dataset_noisy, batch_size=batch_size, shuffle=True, num_workers=16)
+
 valid_dataset_noisy = CIFAR10_(root=root, train=False, valid=True, test=False, noisy=True, transform=transforms.Compose([
             transforms.ToTensor(),
             normalize,

@@ -31,6 +31,7 @@ if args.c == 2: # class-dependent noise (a)
 if args.c == 3: # class-dependent noise (b)
     conf_matrix = [[1,0], [r, 1-r]]
 
+
 class fashion(data.Dataset):
     raw_folder = 'raw'
     processed_folder = 'processed'
@@ -213,6 +214,10 @@ test_dataset = fashion(root=root,
                        )
 
 train_loader = torch.utils.data.DataLoader(dataset=train_dataset,
+                                           batch_size=batch_size,
+                                           shuffle=True, num_workers=16)
+
+peer_loader = torch.utils.data.DataLoader(dataset=train_dataset,
                                            batch_size=batch_size,
                                            shuffle=True, num_workers=16)
 

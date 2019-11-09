@@ -135,5 +135,6 @@ def evaluate(path):
 if __name__ == '__main__':
     main_ce()
     main_dmi()
+    main_peer()
     evaluate('./model_ce_')
     evaluate('./model_dmi_')
