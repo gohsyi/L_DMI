@@ -21,12 +21,12 @@ import argparse
 # batch size
 batch_size = 256
 
-# r: noise amount s: random seed
 parser = argparse.ArgumentParser()
 parser.add_argument('--r',type=float)
 parser.add_argument('--s',type=int)
 parser.add_argument('--device',type=int)
 parser.add_argument('--root', type=str, help='Path for loading CIFAR10 dataset')
+parser.add_argument('--path', type=str, help='Path of the model')
 args = parser.parse_args()
 torch.cuda.set_device(args.device)
 

@@ -105,13 +105,14 @@ def validate_acc(valid_loader, model, criterion):
 
 def main_dmi():
     model_dmi = torch.load('./model_ce_' + str(args.r) + '_' + str(args.s))
+    model_dmi.cuda()
     best_valid_loss = validate_acc(valid_loader=valid_loader_noisy, model=model_dmi, criterion=DMI_loss)
     torch.save(model_dmi, './model_dmi_' + str(args.r) + '_' + str(args.s))
     test_acc = test(model=model_dmi, test_loader=test_loader_)
     print('test_acc=', test_acc)
     for epoch in range(100):
         print("epoch=", epoch,'r=', args.r)
-        learning_rate = 1e-6
+        learning_rate = 1e-3
 
         optimizer_dmi = torch.optim.SGD(model_dmi.parameters(), momentum=0.9, weight_decay=1e-4, lr=learning_rate)
 

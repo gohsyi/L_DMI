@@ -76,7 +76,7 @@ def validate(valid_loader, model, criterion):
 
 
 def validate_acc(valid_loader, model, criterion):
-
+    model.cuda()
     model.eval()
     loss_t = 0
     correct = 0.0
@@ -108,7 +108,7 @@ def main_peer(alpha):
     print('test_acc=', test_acc)
     for epoch in range(100):
         print("epoch=", epoch,'r=', args.r)
-        learning_rate = 1e-6
+        learning_rate = 1e-4
 
         optimizer_peer = torch.optim.SGD(model_peer.parameters(), momentum=0.9, weight_decay=1e-4, lr=learning_rate)
 
@@ -126,6 +126,7 @@ def main_peer(alpha):
 
 def evaluate(path):
     model = torch.load(path)
+    model.cuda()
     test_acc = test(model=model, test_loader=test_loader_)
     print('test_acc=', test_acc)
 
